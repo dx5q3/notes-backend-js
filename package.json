@@ -1,0 +1,28 @@
+{
+  "name": "notes-backend",
+  "version": "0.0.1",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "signin": "dotenv -- node test/signin.js",
+    "test:local": "dotenv -- node test/test.js",
+    "test:seed": "dotenv -- node test/seed.js",
+    "dev": "node --watch ./src/index.js",
+    "deploy": "rm -rf /tmp/dply /tmp/code.zip && mkdir /tmp/dply && cp -r package*.json src/* node_modules/ /tmp/dply/ && cd /tmp/dply/ && zip -r /tmp/code.zip * > /dev/null && aws lambda update-function-code --function-name notes-backend-js --zip-file fileb:///tmp/code.zip | tee /dev/null"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.687.0",
+    "@aws-sdk/client-dynamodb": "^3.687.0",
+    "@aws-sdk/lib-dynamodb": "^3.687.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.2.0",
+    "axios": "^1.7.7"
+  }
+}
