@@ -1,6 +1,6 @@
 import { DynamoDBClient, } from '@aws-sdk/client-dynamodb';
 import { PutCommand, DynamoDBDocumentClient, ScanCommand, QueryCommand, DeleteCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
-import { getUserInfoBySub } from './congito.js';
+import { getUserInfoBySub } from './cognito.js';
 
 const client = new DynamoDBClient({
     region: process.env.region ? process.env.region : 'us-east-1',

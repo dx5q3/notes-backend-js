@@ -4,9 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "signin": "dotenv -- node test/signin.js",
-    "test:local": "dotenv -- node test/test.js",
-    "test:seed": "dotenv -- node test/seed.js",
+    "signin": "dotenv -e .env.local -- node test/signin.js",
+    "test:local": "dotenv -e .env.local -- node test/test.js",
+    "test:seed": "dotenv -e .env.local -- node test/seed.js",
     "dev": "node --watch ./src/index.js",
     "deploy": "rm -rf /tmp/dply /tmp/code.zip && mkdir /tmp/dply && cp -r package*.json src/* node_modules/ /tmp/dply/ && cd /tmp/dply/ && zip -r /tmp/code.zip * > /dev/null && aws lambda update-function-code --function-name notes-backend-js --zip-file fileb:///tmp/code.zip | tee /dev/null"
   },
